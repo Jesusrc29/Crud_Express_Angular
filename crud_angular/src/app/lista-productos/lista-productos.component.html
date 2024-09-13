@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <form class="form-inline">
+          <fieldset class="form-group col-sm-11"></fieldset>
+          <fieldset class="form-group col-sm-1">
+            <a class="btn btn-primary" [routerLink]="['/productos/nuevo']">+</a>
+          </fieldset>
+        </form>
+        <br>
+        <table class="table table-striped">
+            <thead>
+                <tr class="row" align="center">
+                  <th class="col-sm-1">ID</th>
+                  <th class="col-sm-1">Nombre</th>
+                  <th class="col-sm-1">Precio</th>
+                  <th class="col-sm-2">Descripción</th>
+                  <th class="col-sm-1">Stock</th>
+                  <th class="col-sm-2">Fecha de Registro</th>
+                  <th class="col-sm-2">Fecha de Actualización</th>
+                  <th class="col-sm-2">Acciones</th>
+                </tr>
+              </thead>
+          <tbody>
+            <tr *ngFor="let producto of productos | async" class="row">
+                <td class="col-sm-1" align="center"><i>{{ producto.id }}</i></td>
+                <td class="col-sm-1"><i>{{ producto.nombre }}</i></td>
+                <td class="col-sm-1" align="center"><i>{{ producto.precio }}</i></td>
+                <td class="col-sm-2"><i>{{ producto.descripcion }}</i></td>
+                <td class="col-sm-1" align="center"><i>{{ producto.stock }}</i></td>
+                <td class="col-sm-2" align="center"><i>{{ producto.fecha_creacion }}</i></td>
+                <td class="col-sm-2" align="center"><i>{{ producto.fecha_modificacion }}</i></td>
+                <td class="col-sm-2" align="center">
+                  <a class="btn btn-info" [routerLink]="['/productos/editar', producto.id]">Editar</a>
+                  <a class="btn btn-danger" (click)="borrarProducto(producto.id)">Borrar</a>
+                </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
